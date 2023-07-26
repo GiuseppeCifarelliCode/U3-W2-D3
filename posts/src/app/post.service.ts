@@ -32,7 +32,7 @@ export class PostService implements OnInit {
       headers: {
         'content-type' : 'application/json'
       },
-      body: JSON.stringify([post])
+      body: JSON.stringify(post)
     }).then(res => res.json())
     .then(data => console.log(data)
     )

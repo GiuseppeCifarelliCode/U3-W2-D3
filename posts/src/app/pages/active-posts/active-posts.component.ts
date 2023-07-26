@@ -18,5 +18,6 @@ export class ActivePostsComponent {
 
   removePost(post:Post):void{
     this.postSvc.editPosts(post)
+    this.posts = this.getPosts()
   }
 }
