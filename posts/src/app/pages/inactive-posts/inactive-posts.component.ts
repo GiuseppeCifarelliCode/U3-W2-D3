@@ -17,7 +17,7 @@ export class InactivePostsComponent {
     return this.postSvc.getPosts()
   }
 
-  addPost(id:number):void{
-    this.posts = this.posts.filter(post => post.id !== id)
+  addPost(post:Post):void{
+    this.postSvc.editPosts(post)
   }
 }

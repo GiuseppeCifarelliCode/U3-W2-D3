@@ -16,8 +16,7 @@ export class ActivePostsComponent {
     return this.postSvc.getPosts()
   }
 
-  removePost(id:number):void{
-    this.postSvc.editPosts(id)
-    this.posts = this.posts.filter(post => post.id !== id)
+  removePost(post:Post):void{
+    this.postSvc.editPosts(post)
   }
 }

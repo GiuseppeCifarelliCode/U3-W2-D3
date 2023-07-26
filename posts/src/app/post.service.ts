@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Post } from './models/post';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class PostService implements OnInit {
 
   posts:Post[] = []
   constructor(){}
 
   ngOnInit(){
-    fetch('../assets/db.json')
+    fetch('http://localhost:3000/posts')
     .then(res => res.json())
     .then(data  => data.forEach((element:Post) => {
       this.posts.push(element)
@@ -24,13 +24,15 @@ export class PostService {
     return this.posts
   }
 
-  editPosts(id:number){
-    fetch('../assets/db.json', {
+ url: string = 'http://localhost:3000/posts'
+  editPosts(post:Post){
+    post.active = post.active === true ? false : true
+    fetch(this.url + '/' + post.id, {
       method: 'PUT',
       headers: {
         'content-type' : 'application/json'
       },
-      body: JSON.stringify(this.posts)
+      body: JSON.stringify([post])
     }).then(res => res.json())
     .then(data => console.log(data)
     )
