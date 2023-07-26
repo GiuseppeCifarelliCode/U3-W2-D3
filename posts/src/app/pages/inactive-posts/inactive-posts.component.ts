@@ -19,6 +19,5 @@ export class InactivePostsComponent {
 
   addPost(post:Post):void{
     this.postSvc.editPosts(post)
-    this.posts = this.getPosts()
   }
 }
